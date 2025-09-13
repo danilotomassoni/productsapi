@@ -1,5 +1,6 @@
 package io.github.danilotomassoni.productsapi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,11 @@ public class ProductService {
     public Optional<Product> findById(Integer id){
         return repository.findById(id);
     }
+
     public void deleteById(Integer id){
         repository.deleteById(id);
     }
+    
     public Product update(Integer id, Product entity){
         Product product = findById(id).get();
          
@@ -32,5 +35,12 @@ public class ProductService {
         product.setPrice(entity.getPrice() != null ? entity.getPrice():0);
         
         return repository.save(product);
+    }
+
+    public List<Product> findAll(){
+        return repository.findAll();
+    }
+    public List<Product> findByName(String name){
+        return repository.findByName(name);
     }
 }
