@@ -1,5 +1,7 @@
 package io.github.danilotomassoni.productsapi.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class ProductService {
 
     public Product save(Product entity) {
         return repository.saveAndFlush(entity);
+    }
+
+    public Optional<Product> findById(Integer id){
+        return repository.findById(id);
     }
 }
