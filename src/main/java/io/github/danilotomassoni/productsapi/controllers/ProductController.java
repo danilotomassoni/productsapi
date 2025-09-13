@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,5 +37,10 @@ public class ProductController {
     public ResponseEntity<Void> deleteById(@RequestParam Integer id){
         service.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping
+    public ResponseEntity<Product> update(@RequestParam Integer id, @RequestBody Product product){
+
+        return ResponseEntity.ok().body(service.update(id, product));
     }
 }

@@ -24,4 +24,13 @@ public class ProductService {
     public void deleteById(Integer id){
         repository.deleteById(id);
     }
+    public Product update(Integer id, Product entity){
+        Product product = findById(id).get();
+         
+        product.setName(entity.getName().isEmpty() ? product.getName():entity.getName());
+        product.setDescription(entity.getDescription().isEmpty() ? product.getDescription():entity.getDescription());
+        product.setPrice(entity.getPrice() != null ? entity.getPrice():0);
+        
+        return repository.save(product);
+    }
 }
