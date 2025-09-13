@@ -1,5 +1,10 @@
 package io.github.danilotomassoni.productsapi.entities;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +22,12 @@ public class Product {
     private String description;
     private Double price;
 
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+    
     public Product() {
     }
 
@@ -26,6 +37,8 @@ public class Product {
         this.description = description;
         this.price = price;
     }
+
+   
 
     public Integer getId() {
         return id;
@@ -57,6 +70,22 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+     public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
