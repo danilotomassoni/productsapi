@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +31,10 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<Product> findById(@RequestParam Integer id){
         return ResponseEntity.ok().body(service.findById(id).orElseThrow());
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteById(@RequestParam Integer id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

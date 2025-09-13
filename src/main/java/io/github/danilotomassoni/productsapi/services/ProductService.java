@@ -21,4 +21,7 @@ public class ProductService {
     public Optional<Product> findById(Integer id){
         return repository.findById(id);
     }
+    public void deleteById(Integer id){
+        repository.deleteById(id);
+    }
 }
